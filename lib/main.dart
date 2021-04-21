@@ -11,31 +11,31 @@ class MonthYear extends StatefulWidget {
 }
 
 class ScheduleExample extends State<MonthYear> {
-  String _month, _year;
+  String? _month, _year;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         home: Scaffold(
             body: SafeArea(
-          child: Column(
-            children: [
-              Container(
-                child: Text('Month: ' '$_month'),
+              child: Column(
+                children: [
+                  Container(
+                    child: Text('Month: ' '$_month'),
+                  ),
+                  Container(
+                    child: Text('Year: ' '$_year'),
+                  ),
+                  Expanded(
+                    child: SfCalendar(
+                      view: CalendarView.month,
+                      dataSource: getCalendarDataSource(),
+                      onViewChanged: viewChanged,
+                    ),
+                  ),
+                ],
               ),
-              Container(
-                child: Text('Year: ' '$_year'),
-              ),
-              Expanded(
-                child: SfCalendar(
-                  view: CalendarView.month,
-                  dataSource: getCalendarDataSource(),
-                  onViewChanged: viewChanged,
-                ),
-              ),
-            ],
-          ),
-        )));
+            )));
   }
 
   _DataSource getCalendarDataSource() {
@@ -69,7 +69,7 @@ class ScheduleExample extends State<MonthYear> {
   }
 
   void viewChanged(ViewChangedDetails viewChangedDetails) {
-    SchedulerBinding.instance
+    SchedulerBinding.instance!
         .addPostFrameCallback((Duration duration) {
       setState(() {
         _month = DateFormat('MMMM').format(viewChangedDetails
