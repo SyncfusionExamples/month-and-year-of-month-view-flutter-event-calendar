@@ -3,9 +3,11 @@ import 'package:flutter/scheduler.dart';
 import 'package:intl/intl.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 
-void main() => runApp(MonthYear());
+void main() => runApp(const MonthYear());
 
 class MonthYear extends StatefulWidget {
+  const MonthYear({super.key});
+
   @override
   State<StatefulWidget> createState() => ScheduleExample();
 }
@@ -20,12 +22,8 @@ class ScheduleExample extends State<MonthYear> {
             body: SafeArea(
               child: Column(
                 children: [
-                  Container(
-                    child: Text('Month: ' '$_month'),
-                  ),
-                  Container(
-                    child: Text('Year: ' '$_year'),
-                  ),
+                  Text('Month: ' '$_month'),
+                  Text('Year: ' '$_year'),
                   Expanded(
                     child: SfCalendar(
                       view: CalendarView.month,
@@ -69,8 +67,7 @@ class ScheduleExample extends State<MonthYear> {
   }
 
   void viewChanged(ViewChangedDetails viewChangedDetails) {
-    SchedulerBinding.instance!
-        .addPostFrameCallback((Duration duration) {
+    SchedulerBinding.instance.addPostFrameCallback((Duration duration) {
       setState(() {
         _month = DateFormat('MMMM').format(viewChangedDetails
             .visibleDates[viewChangedDetails.visibleDates.length ~/ 2]).toString();
