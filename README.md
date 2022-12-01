@@ -4,6 +4,7 @@ A quick-start example to help you to get the month and year of month view in the
 
 Using the [onViewChanged](https://pub.dev/documentation/syncfusion_flutter_calendar/latest/calendar/SfCalendar/onViewChanged.html) callback you can get the month and year of the month view using visibleDates property of ViewChangedDetails args. Then you can assign _month and _year values to the Text properties to show the values.
 
+![MonthYear](https://user-images.githubusercontent.com/46158936/205004299-8e201748-d92a-4807-ba4b-863921cdff07.gif)
 
 ## Requirements to run the demo
 * [VS Code](https://code.visualstudio.com/download)
